@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 10, "column": 0}, "map": {"version":3,"sources":["file:///Users/brad/git/mu/pages/index.js"],"sourcesContent":["export default () => (\n\t<main>\n\t\t<h1>Welcome to Next.js</h1>\n\t</main>\n)\n"],"names":[],"mappings":";;;;;;uCAAe,kBACd,qKAAC;kBACA,cAAA,qKAAC;sBAAG","debugId":null}}]
+}
