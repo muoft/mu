@@ -1,4 +1,5 @@
-document.getElementById("email-form").addEventListener("submit", function (e) {
+var form = document.getElementById("email-form");
+if (form) form.addEventListener("submit", function (e) {
     e.preventDefault(); // Prevent the default form submission
     document.getElementById("message").textContent = "Submitting..";
     document.getElementById("message").style.display = "block";

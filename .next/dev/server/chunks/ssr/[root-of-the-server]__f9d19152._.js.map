@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 10, "column": 0}, "map": {"version":3,"sources":["file:///Users/brad/git/mu/pages/index.jsx"],"sourcesContent":["export default async () => {\n    'use server'\n    const page = await fetch('/index.html').then(res => res.text())\n    return <div dangerouslySetInnerHTML={{ __html: page }} />;\n}"],"names":[],"mappings":";;;;;;uCAAe;IACX;IACA,MAAM,OAAO,MAAM,MAAM,eAAe,IAAI,CAAC,CAAA,MAAO,IAAI,IAAI;IAC5D,qBAAO,qKAAC;QAAI,yBAAyB;YAAE,QAAQ;QAAK;;;;;;AACxD","debugId":null}}]
-}

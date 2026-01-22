@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/brad/git/mu/pages/events/example.js"],"sourcesContent":["import Event from '../template';\nexport default () =>\n<Event title=\"Dog of indomitable hope and optimism\" image={\"/events/example/image.png\"} date=\"2025-11-11, Somewhere\" location=\"\">\n    I like this dog. He seems to have an indomitable hope and optimism about him. I choose to believe that no matter what life throws at him, he will always find a way to keep going and keep smiling. This is a quality that I admire greatly and strive to embody in my own life.\n</Event>\n"],"names":[],"mappings":";;;;;;;;;;;;uCACe,kBACf,qKAAC;QAAM,OAAM;QAAuC,OAAO;QAA6B,MAAK;QAAwB,UAAS;kBAAG","debugId":null}}]
-}

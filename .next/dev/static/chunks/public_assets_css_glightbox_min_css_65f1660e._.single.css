@@ -607,7 +607,7 @@ iframe.wait-autoplay {
   }
 }
 
-@media (width >= 769px) {
+@media (min-width: 769px) {
   .glightbox-container .ginner-container {
     flex-direction: row;
     width: auto;
@@ -674,13 +674,13 @@ iframe.wait-autoplay {
   }
 }
 
-@media (width >= 992px) {
+@media (min-width: 992px) {
   .glightbox-clean .gclose, .glightbox-modern .gclose {
     right: 20px;
   }
 }
 
-@media screen and (height <= 420px) {
+@media screen and (max-height: 420px) {
   .goverlay {
     background: #000;
   }

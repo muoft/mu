@@ -1,6 +1,22 @@
 {
+  "/": "pages/index.html",
+  "/FAQs": "pages/FAQs.html",
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
   "/_error": "pages/_error.js",
-  "/events/template": "pages/events/template.js"
+  "/about/about-us": "pages/about/about-us.html",
+  "/about/execs": "pages/about/execs.html",
+  "/api/repo": "pages/api/repo.js",
+  "/api/repo/[path]": "pages/api/repo/[path].js",
+  "/events": "pages/events.html",
+  "/events/2025PiDay": "pages/events/2025PiDay.html",
+  "/events/Colloquium2025Feb13": "pages/events/Colloquium2025Feb13.html",
+  "/events/Colloquium2025Feb27": "pages/events/Colloquium2025Feb27.html",
+  "/events/Colloquium2025Mar13": "pages/events/Colloquium2025Mar13.html",
+  "/events/Colloquium2025Mar6": "pages/events/Colloquium2025Mar6.html",
+  "/events/PutnamDay": "pages/events/PutnamDay.html",
+  "/events/example": "pages/events/example.html",
+  "/events/template": "pages/events/template.html",
+  "/repo": "pages/repo.html",
+  "/404": "pages/404.html"
 }

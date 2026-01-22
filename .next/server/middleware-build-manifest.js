@@ -1,21 +1,86 @@
 globalThis.__BUILD_MANIFEST = {
   "pages": {
+    "/": [
+      "static/chunks/a5990e3b8d472531.js",
+      "static/chunks/34608078441b5f6a.js",
+      "static/chunks/turbopack-254331b81e1ee737.js"
+    ],
+    "/FAQs": [
+      "static/chunks/146e0dc5c5a88ae2.js",
+      "static/chunks/34608078441b5f6a.js",
+      "static/chunks/turbopack-f2bd5e689dca506d.js"
+    ],
     "/_app": [
-      "static/chunks/d1060630f9500a24.js",
-      "static/chunks/303fe61862219b68.js",
-      "static/chunks/f0216126fdc1d185.css",
-      "static/chunks/e2527bbdf433012d.css",
-      "static/chunks/turbopack-3e2803992dde5b8d.js"
+      "static/chunks/c5352de5bb561abf.js",
+      "static/chunks/34608078441b5f6a.js",
+      "static/chunks/ba737901d69d7d1d.css",
+      "static/chunks/1a8faba4813ff7cf.css",
+      "static/chunks/turbopack-20a456de166c50d4.js"
     ],
     "/_error": [
-      "static/chunks/cfbf9c25e6fa78b1.js",
-      "static/chunks/303fe61862219b68.js",
-      "static/chunks/turbopack-d9dcb4775da868a7.js"
+      "static/chunks/af864e3b25fb081b.js",
+      "static/chunks/34608078441b5f6a.js",
+      "static/chunks/turbopack-beb054997c66786d.js"
+    ],
+    "/about/about-us": [
+      "static/chunks/c1ed0bdb6682a59b.js",
+      "static/chunks/34608078441b5f6a.js",
+      "static/chunks/turbopack-1c965ad25f100ef2.js"
+    ],
+    "/about/execs": [
+      "static/chunks/cdcd0a9226281955.js",
+      "static/chunks/34608078441b5f6a.js",
+      "static/chunks/turbopack-f70bc2d9ea151324.js"
+    ],
+    "/events": [
+      "static/chunks/6a9dfb9eb99a3191.js",
+      "static/chunks/34608078441b5f6a.js",
+      "static/chunks/turbopack-4f530ba1f3d54ee9.js"
+    ],
+    "/events/2025PiDay": [
+      "static/chunks/6ef2652ea173a5e9.js",
+      "static/chunks/34608078441b5f6a.js",
+      "static/chunks/turbopack-9ce5a1983b45ece1.js"
+    ],
+    "/events/Colloquium2025Feb13": [
+      "static/chunks/06800cbd223e644e.js",
+      "static/chunks/34608078441b5f6a.js",
+      "static/chunks/turbopack-8e5206df9e1c5769.js"
+    ],
+    "/events/Colloquium2025Feb27": [
+      "static/chunks/320fdc8d46fd26e3.js",
+      "static/chunks/34608078441b5f6a.js",
+      "static/chunks/turbopack-9b51b5201461b899.js"
+    ],
+    "/events/Colloquium2025Mar13": [
+      "static/chunks/9b46c890da9b5fca.js",
+      "static/chunks/34608078441b5f6a.js",
+      "static/chunks/turbopack-e08919a148565fb4.js"
+    ],
+    "/events/Colloquium2025Mar6": [
+      "static/chunks/6885f5a8f1033ff4.js",
+      "static/chunks/34608078441b5f6a.js",
+      "static/chunks/turbopack-e2eedff46103ed24.js"
+    ],
+    "/events/PutnamDay": [
+      "static/chunks/11342b5e9b2b57d4.js",
+      "static/chunks/34608078441b5f6a.js",
+      "static/chunks/turbopack-50d499504665ed32.js"
+    ],
+    "/events/example": [
+      "static/chunks/4f1a3a2af4eeffee.js",
+      "static/chunks/34608078441b5f6a.js",
+      "static/chunks/turbopack-ad4f5fb8ce83d2f0.js"
     ],
     "/events/template": [
-      "static/chunks/77b94ac914ded0c2.js",
-      "static/chunks/303fe61862219b68.js",
-      "static/chunks/turbopack-09df7de8bc72d5fb.js"
+      "static/chunks/7176169f8369f9f8.js",
+      "static/chunks/34608078441b5f6a.js",
+      "static/chunks/turbopack-ca59c17b3a313bf0.js"
+    ],
+    "/repo": [
+      "static/chunks/35b2d877821bbcae.js",
+      "static/chunks/34608078441b5f6a.js",
+      "static/chunks/turbopack-57d4253d5f04f5ea.js"
     ]
   },
   "devFiles": [],

@@ -6,9 +6,9 @@
   "rootMainFiles": [],
   "pages": {
     "/events/template": [
-      "static/chunks/77b94ac914ded0c2.js",
-      "static/chunks/303fe61862219b68.js",
-      "static/chunks/turbopack-09df7de8bc72d5fb.js"
+      "static/chunks/7176169f8369f9f8.js",
+      "static/chunks/34608078441b5f6a.js",
+      "static/chunks/turbopack-ca59c17b3a313bf0.js"
     ]
   },
   "ampFirstPages": []
