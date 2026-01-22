@@ -34,6 +34,14 @@
         "nxtPpath": "nxtPpath"
       },
       "namedRegex": "^/api/repo/(?<nxtPpath>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/events/[title]",
+      "regex": "^/events/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPtitle": "nxtPtitle"
+      },
+      "namedRegex": "^/events/(?<nxtPtitle>[^/]+?)(?:/)?$"
     }
   ],
   "staticRoutes": [
@@ -62,58 +70,22 @@
       "namedRegex": "^/api/repo(?:/)?$"
     },
     {
+      "page": "/api/repo/upload",
+      "regex": "^/api/repo/upload(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/repo/upload(?:/)?$"
+    },
+    {
       "page": "/events",
       "regex": "^/events(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/events(?:/)?$"
     },
     {
-      "page": "/events/2025PiDay",
-      "regex": "^/events/2025PiDay(?:/)?$",
+      "page": "/events/listing",
+      "regex": "^/events/listing(?:/)?$",
       "routeKeys": {},
-      "namedRegex": "^/events/2025PiDay(?:/)?$"
-    },
-    {
-      "page": "/events/Colloquium2025Feb13",
-      "regex": "^/events/Colloquium2025Feb13(?:/)?$",
-      "routeKeys": {},
-      "namedRegex": "^/events/Colloquium2025Feb13(?:/)?$"
-    },
-    {
-      "page": "/events/Colloquium2025Feb27",
-      "regex": "^/events/Colloquium2025Feb27(?:/)?$",
-      "routeKeys": {},
-      "namedRegex": "^/events/Colloquium2025Feb27(?:/)?$"
-    },
-    {
-      "page": "/events/Colloquium2025Mar13",
-      "regex": "^/events/Colloquium2025Mar13(?:/)?$",
-      "routeKeys": {},
-      "namedRegex": "^/events/Colloquium2025Mar13(?:/)?$"
-    },
-    {
-      "page": "/events/Colloquium2025Mar6",
-      "regex": "^/events/Colloquium2025Mar6(?:/)?$",
-      "routeKeys": {},
-      "namedRegex": "^/events/Colloquium2025Mar6(?:/)?$"
-    },
-    {
-      "page": "/events/example",
-      "regex": "^/events/example(?:/)?$",
-      "routeKeys": {},
-      "namedRegex": "^/events/example(?:/)?$"
-    },
-    {
-      "page": "/events/PutnamDay",
-      "regex": "^/events/PutnamDay(?:/)?$",
-      "routeKeys": {},
-      "namedRegex": "^/events/PutnamDay(?:/)?$"
-    },
-    {
-      "page": "/events/template",
-      "regex": "^/events/template(?:/)?$",
-      "routeKeys": {},
-      "namedRegex": "^/events/template(?:/)?$"
+      "namedRegex": "^/events/listing(?:/)?$"
     },
     {
       "page": "/FAQs",
@@ -126,6 +98,12 @@
       "regex": "^/repo(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/repo(?:/)?$"
+    },
+    {
+      "page": "/repo/upload",
+      "regex": "^/repo/upload(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/repo/upload(?:/)?$"
     }
   ],
   "dataRoutes": [],
