@@ -1,5 +1,5 @@
 import { usePathname } from "next/navigation";
-import listing from "./listing";
+import listing from "../../components/events";
 import { Breadcrumbs, ScrollTop, SiteFooter, SiteHeader } from '../../components/common'
 
 export default () => {

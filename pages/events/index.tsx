@@ -1,5 +1,5 @@
 import { Breadcrumbs, ScrollTop, SiteFooter, SiteHeader } from "../../components/common";
-import listing from "./listing";
+import listing from "../../components/events";
 
 export default () => <>
     <SiteHeader active="events" />

@@ -1,9 +1,12 @@
 self.__BUILD_MANIFEST = {
+  "/": [
+    "static/chunks/pages/index.js"
+  ],
   "/_error": [
     "static/chunks/pages/_error.js"
   ],
-  "/repo/upload": [
-    "static/chunks/pages/repo/upload.js"
+  "/events": [
+    "static/chunks/pages/events.js"
   ],
   "__rewrites": {
     "afterFiles": [
@@ -26,7 +29,6 @@ self.__BUILD_MANIFEST = {
     "/api/repo/upload",
     "/api/repo/[path]",
     "/events",
-    "/events/listing",
     "/events/[title]",
     "/repo",
     "/repo/upload"
