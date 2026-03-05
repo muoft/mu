@@ -1,1 +1,9 @@
-{ "name": "muoft", "pages_build_output_dir": "dist", "r2_buckets": [{ "binding": "BUCKET", "bucket_name": "muoft" }] }
+{
+    "name": "muoft",
+    "compatibility_date": "2026-03-05",
+    "pages_build_output_dir": "dist",
+    "r2_buckets": [{
+        "bucket_name": "muoft",
+        "binding": "BUCKET",
+    }]
+}

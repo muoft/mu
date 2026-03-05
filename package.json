@@ -3,9 +3,9 @@
     "version": "0.1.0",
     "description": "muoft site",
     "scripts": {
-        "dev": "vite",
+        "dev": "wrangler pages dev",
         "build": "vite build",
-        "pages:dev": "npx wrangler pages dev dist"
+        "vite": "vite"
     },
     "devDependencies": {
         "@cloudflare/workers-types": "^4.20260305.1",
