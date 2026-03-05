@@ -1,0 +1,1 @@
+{ "name": "muoft", "pages_build_output_dir": "dist", "r2_buckets": [{ "binding": "BUCKET", "bucket_name": "muoft" }] }

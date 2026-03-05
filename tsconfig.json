@@ -6,6 +6,7 @@
       "dom.iterable",
       "esnext"
     ],
+    "types": ["@cloudflare/workers-types"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -19,7 +20,6 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "next-env.d.ts",
     "**/*.mts",
     "**/*.ts",
     "**/*.tsx"

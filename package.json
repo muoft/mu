@@ -1,21 +1,24 @@
 {
     "name": "muoft",
     "version": "0.1.0",
-    "description": "Fancy Next.js app",
+    "description": "muoft site",
     "scripts": {
-        "dev": "next",
-        "build": "next build"
+        "dev": "vite",
+        "build": "vite build",
+        "pages:dev": "npx wrangler pages dev dist"
     },
     "devDependencies": {
+        "@cloudflare/workers-types": "^4.20260305.1",
         "@types/node": "25.0.3",
         "@types/react": "19.2.7",
-        "next": "^16.1.1",
+        "@vitejs/plugin-react": "^4.2.1",
         "react": "^19.2.0",
         "react-dom": "^19.2.0",
-        "typescript": "5.9.3"
+        "typescript": "5.9.3",
+        "vite": "^6.0.0",
+        "wrangler": "^4.0.0"
     },
     "dependencies": {
-        "@aws-sdk/client-s3": "^3.958.0",
-        "@aws-sdk/s3-request-presigner": "^3.972.0"
+        "react-router-dom": "^7.1.1"
     }
 }
