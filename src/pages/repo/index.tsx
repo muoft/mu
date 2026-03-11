@@ -56,7 +56,7 @@ export default () => {
                 <h3 className='text-center'>Course Repository</h3>
                 <CourseSearch setCourse={setCourse} course={course} courses={courses} />
                 <div className='text-center my-2 small text-muted'>
-                    Newer Than... <input type="number" value={oldest} min={2007} max={2025} onChange={e => setOldest(+e.target.value)} />
+                    Newer Than... <input className='' type="number" value={oldest} min={2007} max={2025} onChange={e => setOldest(+e.target.value)} />
                     <span className="px-2"></span>
                     Tests/Exams Only <input type='checkbox' checked={showAll} onChange={e => setShowAll(e.target.checked)} />
                 </div>

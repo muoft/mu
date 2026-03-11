@@ -4,6 +4,7 @@
     "description": "muoft site",
     "scripts": {
         "dev": "wrangler pages dev",
+        "deploy": "wrangler pages deploy",
         "build": "vite build",
         "vite": "vite"
     },
