@@ -13,7 +13,7 @@ export default () => <>
                         <p className="wow fadeInUp" data-wow-delay=".6s">To infinity and beyond!</p>
                         <div className="button wow fadeInUp" data-wow-delay=".8s">
                             <a href="/about/about-us" className="btn">About Us</a>
-                            {/* <a href="/repo/" className="btn">Course Repository</a> */}
+                            <a href="/repo/" className="btn">Past Tests Repository</a>
                         </div>
                     </div>
                 </div>
