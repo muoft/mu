@@ -1,5 +1,5 @@
 export async function onRequest(context: any) {
-    const bucket = context.env.BUCKET as R2Bucket
+    const bucket = context.env.REPO as R2Bucket
     const file = await bucket.get(context.params.path)
     if (!file) return new Response("Not found", { status: 404 })
 

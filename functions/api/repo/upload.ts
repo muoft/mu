@@ -1,6 +1,6 @@
 export async function onRequest(context: any) {
     const { request, env } = context
-    const bucket = env.BUCKET as R2Bucket
+    const bucket = env.REPO as R2Bucket
     const filename = new URL(request.url).searchParams.get('filename')
 
     await bucket.put(`submit/${filename}`, request.body, {

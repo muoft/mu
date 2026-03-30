@@ -1,7 +1,7 @@
 export type Entry = { course: string, year: number | undefined, name: string, tags: string[], file: string }
 
 export async function onRequest(context: any) {
-    const bucket = context.env.BUCKET as R2Bucket
+    const bucket = context.env.REPO as R2Bucket
     const { objects } = await bucket.list()
 
     return Response.json(objects.map(({ key }) => ({
