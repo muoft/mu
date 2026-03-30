@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { SiteFooter, SiteHeader } from '../../components/common'
+import { Breadcrumbs, SiteFooter, SiteHeader } from '../../components/common'
 
 type Entry = { course: string, year: number | undefined, name: string, tags: string[], file: string }
 
@@ -50,10 +50,11 @@ export default () => {
 
     return <>
         <SiteHeader active='repo' />
+        <Breadcrumbs crumbs={["Past Tests"]} show={false}/>
 
         <div className='breadcrumbs pt-5'>
             <div className='container my-5 py-5 w-75 border shadow rounded bg-white'>
-                <h3 className='text-center'>Course Repository</h3>
+                <h3 className='text-center'>Past Tests Repository</h3>
                 <CourseSearch setCourse={setCourse} course={course} courses={courses} />
                 <div className='text-center my-2 small text-muted'>
                     Newer Than... <input className='' type="number" value={oldest} min={2007} max={2025} onChange={e => setOldest(+e.target.value)} />

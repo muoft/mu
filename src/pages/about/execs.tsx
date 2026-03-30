@@ -1,31 +1,16 @@
-import { ScrollTop, SiteFooter, SiteHeader } from '../../components/common';
+import { Breadcrumbs, ScrollTop, SiteFooter, SiteHeader } from '../../components/common';
 
 export default () => <>
     <SiteHeader active={null} />
 
-    <div className="breadcrumbs">
-        <div className="container">
-            <div className="row align-items-center">
-                <div className="col-lg-6 offset-lg-3 col-md-12 col-12">
-                    <div className="breadcrumbs-content">
-                        <h1 className="page-title">Executives</h1>
-                        <ul className="breadcrumb-nav">
-                            <li><a href="/">Home</a></li>
-                            <li>About</li>
-                            <li>Executives</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <Breadcrumbs crumbs={['About', 'Executives']} />
 
     <section className="about section">
         <div className="container">
             <h1>Meet the Executives!</h1>
             <div className="row align-items-center">
                 <div className="col-lg-6 col-12">
-                    <div className="content wow fadeInRight" data-wow-delay=".4s">
+                    <div className="content ">
                         <h3>Ibrahim Hamid, President</h3>
                         <p>
                             Name: Ibrahim Hamid <br />
@@ -43,7 +28,7 @@ export default () => <>
                     <embed src="/about/images/execs/JustRyan.jpg" style={{ maxWidth: '70%', height: 'auto', borderRadius: '50%' }} />
                 </div>
                 <div className="col-lg-6 col-12">
-                    <div className="content wow fadeInRight" data-wow-delay=".4s">
+                    <div className="content ">
                         <h3>Ryan Grewal, Secretary</h3>
                         <p>
                             Name: Ryan Grewal <br />
@@ -55,7 +40,7 @@ export default () => <>
                 </div>
 
                 <div className="col-lg-6 col-12">
-                    <div className="content wow fadeInRight" data-wow-delay=".4s">
+                    <div className="content ">
                         <h3>Caitlin Terry, Treasurer</h3>
                         <p>
                             Name: Caitlin Terry <br />
@@ -73,7 +58,7 @@ export default () => <>
                     <embed src="/about/images/execs/Kristopher.JPG" style={{ maxWidth: '70%', height: 'auto', borderRadius: '50%' }} />
                 </div>
                 <div className="col-lg-6 col-12">
-                    <div className="content wow fadeInRight" data-wow-delay=".4s">
+                    <div className="content ">
                         <h3>Kristopher Zhao, Vice President of Academics</h3>
                         <p>
                             Name: Kristopher Zhao <br />

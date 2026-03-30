@@ -21,14 +21,14 @@ const EventPage = ({ title, image, body, date, location }) => {
         <div className="container">
             <div className="row align-items-center">
                 <div className="col-lg-6 col-12">
-                    <div className="content wow fadeInRight" data-wow-delay=".4s">
+                    <div className="content ">
                         <h3>{title}</h3>
                         <h6>{date}, {location}</h6>
                         <p style={{ whiteSpace: 'pre-line' }}> {body} </p>
                     </div>
                 </div>
                 <div className="col-lg-6 col-12">
-                    <div className="image wow fadeInRight" data-wow-delay=".2s">
+                    <div className="image ">
                         <img src={image} alt="#" />
                     </div>
                 </div>

@@ -26,15 +26,6 @@ Author: GrayGrids
                 if (!header_navbar) return;
         var sticky = header_navbar.offsetTop;
 
-                var logo = document.querySelector('.navbar-brand img')
-        if (window.pageYOffset > sticky) {
-          header_navbar.classList.add("sticky");
-                    if (logo) logo.src = '/assets/images/logo/logo.svg';
-        } else {
-          header_navbar.classList.remove("sticky");
-                    if (logo) logo.src = '/assets/images/logo/white-logo.svg';
-        }
-
         // show or hide the back-top-top button
         var backToTo = document.querySelector(".scroll-top");
         if (backToTo) {

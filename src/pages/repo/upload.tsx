@@ -14,7 +14,7 @@ export default () => {
 
     return <>
         <SiteHeader active="repo" />
-        <Breadcrumbs crumbs={["Course Repository", "Upload"]} />
+        <Breadcrumbs crumbs={["Past Tests Repository", "Upload"]} />
         <div style={{ textAlign: 'center', padding: '3%' }}>
             <h3>Upload a file (or multiple) </h3> <br />
             <input type="file" onInput={inp} multiple />
