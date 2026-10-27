@@ -16,8 +16,9 @@ export default () => <>
     <section className="about section">
         <div className="container">
             <h1>Past Executives</h1>
-            <h2 style={{ marginTop: '2rem' }}>2025–2026</h2>
-            <div className="row">
+            <details open style={{ borderBottom: '1px solid #ddd', padding: '1rem 0', marginTop: '2rem' }}>
+                <summary style={{ cursor: 'pointer', fontSize: '1.2rem', fontWeight: 600 }}>2025–2026</summary>
+                <div className="row">
                 {lastYear.map(exec => <div className="col-lg-4 col-md-6 col-12" key={exec.name} style={{ marginTop: '2.5rem' }}>
                     <img src={`/about/images/execs/${exec.photo}`} alt={exec.name} loading="lazy" style={{ width: '100%', maxWidth: 280, aspectRatio: '1', objectFit: 'cover', borderRadius: '50%', marginBottom: '1.25rem' }} />
                     <div className="content">
@@ -29,9 +30,8 @@ export default () => <>
                         </p>
                     </div>
                 </div>)}
-            </div>
-            <h2 style={{ marginTop: '4rem', marginBottom: '1rem' }}>Earlier teams</h2>
-            <p>From the Math Union’s existing archive; some years have incomplete records.</p>
+                </div>
+            </details>
             {archive.map(team => <details key={team.year} style={{ borderBottom: '1px solid #ddd', padding: '1rem 0' }}>
                 <summary style={{ cursor: 'pointer', fontSize: '1.2rem', fontWeight: 600 }}>{team.year}</summary>
                 <ul style={{ marginTop: '0.75rem' }}>
