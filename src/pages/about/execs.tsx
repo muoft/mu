@@ -1,77 +1,40 @@
 import { Breadcrumbs, ScrollTop, SiteFooter, SiteHeader } from '../../components/common';
 
+const execs = [
+    { name: 'Muren Kang', role: 'President', year: 3, program: 'Math and Physics Specialist', math: 'Group Theory', fact: "I don't eat mushrooms (bcz they're too cute)", photo: 'muren' },
+    { name: 'Nikita Chekhovskoy', role: 'Secretary', year: 3, program: 'Mathematics Specialist and Computer Science Major', math: 'All of math!', fact: "I've been crocheting for 8 years and I have 3 cats 🐈🐈🐈", photo: 'nikita' },
+    { name: 'Darren Kosasih', role: 'Treasurer', year: 2, program: 'Applied math in economics and finance specialist, Computer science major', math: 'Combinatorics', fact: 'I like gambling', photo: 'darren' },
+    { name: 'Bradley Boratto', role: 'Vice President of Social Affairs', year: 3, program: 'Physics, Computer Science, Math', math: 'Does machine learning count?', fact: "I still haven't decided my programs... I'm on track to complete all 3 majors but we'll see", photo: 'bradley' },
+    { name: 'Dharaneeswar Dadibathina', role: 'Vice President of Internal Affairs', year: 2, program: 'Biological Physics Specialist, Applied Mathematics', math: 'Chaos and Fractals', fact: 'I was part of my high school choir that was the first Canadian one to earn 1st place in an international competition in Spain!', photo: 'dharaneeswar' },
+    { name: 'Zef Wu', role: 'Vice President of External Affairs', year: 4, program: 'Math specialist', math: 'linear operators', fact: 'I collect vinyl records', photo: 'zef' },
+    { name: 'Grace Groth', role: 'Vice President of Communications', year: 2, program: 'Cognitive Science and Statistics', math: 'Probability', fact: 'I love wildlife photography', photo: 'grace' },
+    { name: 'Stefan Berman', role: 'Vice President of Asset Management', year: 2, program: 'Mathematics', math: 'TBD…', fact: 'I occasionally attempt ultramarathons without training…', photo: 'stefan' },
+    { name: 'Leila Bansal', role: 'Vice President of Representatives', year: 2, program: 'Physiology + health and disease major, math minor', math: 'Geometry', fact: 'Phosphorus was accidentally discovered by someone trying to turn human urine into gold', photo: 'leila' },
+];
+
 export default () => <>
     <SiteHeader active={null} />
-
     <Breadcrumbs crumbs={['About', 'Executives']} />
-
     <section className="about section">
         <div className="container">
             <h1>Meet the Executives!</h1>
-            <div className="row align-items-center">
-                <div className="col-lg-6 col-12">
-                    <div className="content ">
-                        <h3>Ibrahim Hamid, President</h3>
-                        <p>
-                            Name: Ibrahim Hamid <br />
-                            Year: 4 <br />
-                            Favorite math area: Geometry<br />
-                            Fun fact: I support Inter.
+            <p>2026–2027</p>
+            <div className="row">
+                {execs.map(exec => <div className="col-lg-4 col-md-6 col-12" key={exec.name} style={{ marginTop: '2.5rem' }}>
+                    <img src={`/about/images/execs/2026/${exec.photo}.jpg`} alt={exec.name} loading="lazy" style={{ width: '100%', maxWidth: 280, aspectRatio: '1', objectFit: 'cover', borderRadius: '50%', marginBottom: '1.25rem' }} />
+                    <div className="content">
+                        <h3>{exec.name}</h3>
+                        <p><strong>{exec.role}</strong><br />
+                            Year: {exec.year}<br />
+                            Program: {exec.program}<br />
+                            Favourite math area: {exec.math}<br />
+                            Fun fact: {exec.fact}
                         </p>
                     </div>
-                </div>
-                <div className="col-lg-6 col-12">
-                    <embed src="/about/images/execs/IbraCropped.jpg" style={{ maxWidth: '70%', height: 'auto', borderRadius: '50%' }} />
-                </div>
-
-                <div className="col-lg-6 col-12">
-                    <embed src="/about/images/execs/JustRyan.jpg" style={{ maxWidth: '70%', height: 'auto', borderRadius: '50%' }} />
-                </div>
-                <div className="col-lg-6 col-12">
-                    <div className="content ">
-                        <h3>Ryan Grewal, Secretary</h3>
-                        <p>
-                            Name: Ryan Grewal <br />
-                            Year: 2 <br />
-                            Favorite math area: Algebra<br />
-                            Fun fact: I play a lot of sudoku
-                        </p>
-                    </div>
-                </div>
-
-                <div className="col-lg-6 col-12">
-                    <div className="content ">
-                        <h3>Caitlin Terry, Treasurer</h3>
-                        <p>
-                            Name: Caitlin Terry <br />
-                            Year: 4 <br />
-                            Favorite math area: Number theory<br />
-                            Fun fact: I’ve never lost a game of Connect 4
-                        </p>
-                    </div>
-                </div>
-                <div className="col-lg-6 col-12">
-                    <embed src="/about/images/execs/CaitlinCropped.jpg" style={{ maxWidth: '70%', height: 'auto', borderRadius: '50%' }} />
-                </div>
-
-                <div className="col-lg-6 col-12">
-                    <embed src="/about/images/execs/Kristopher.JPG" style={{ maxWidth: '70%', height: 'auto', borderRadius: '50%' }} />
-                </div>
-                <div className="col-lg-6 col-12">
-                    <div className="content ">
-                        <h3>Kristopher Zhao, Vice President of Academics</h3>
-                        <p>
-                            Name: Kristopher Zhao <br />
-                            Year: 3 <br />
-                            Favorite math area: Algebra<br />
-                            Fun fact: I like photography.
-                        </p>
-                    </div>
-                </div>
+                </div>)}
             </div>
         </div>
     </section>
-
     <SiteFooter />
     <ScrollTop />
-</>
+</>;
