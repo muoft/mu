@@ -12,6 +12,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/index';
 import AboutUs from './pages/about/about-us';
 import Execs from './pages/about/execs';
+import PastExecs from './pages/about/past-execs';
 import FAQs from './pages/FAQs';
 import Events from './pages/events/index';
 import EventDetailPage from './pages/events/[title]';
@@ -25,6 +26,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         <Route path="/" element={<Home />} />
         <Route path="/about/about-us" element={<AboutUs />} />
         <Route path="/about/execs" element={<Execs />} />
+        <Route path="/about/past-execs" element={<PastExecs />} />
         <Route path="/FAQs" element={<FAQs />} />
         <Route path="/events" element={<Events />} />
         <Route path="/events/:title" element={<EventDetailPage />} />

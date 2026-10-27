@@ -29,6 +29,7 @@ export const SiteHeader = ({ active }: { active: string }) => (
                                         <ul className="sub-menu collapse" id="submenu-about">
                                             <li className="nav-item"><a href="/about/about-us">About Us</a></li>
                                             <li className="nav-item"><a href="/about/execs">Exec Team</a></li>
+                                            <li className="nav-item"><a href="/about/past-execs">Past Execs</a></li>
                                             <li className="nav-item"><a href="/constitution.pdf">Constitution</a></li>
                                         </ul>
                                     </li>

@@ -19,6 +19,7 @@ export default () => <>
         <div className="container">
             <h1>Meet the Executives!</h1>
             <p>2026–2027</p>
+            <p><a href="/about/past-execs">Past executives →</a></p>
             <div className="row">
                 {execs.map(exec => <div className="col-lg-4 col-md-6 col-12" key={exec.name} style={{ marginTop: '2.5rem' }}>
                     <img src={`/about/images/execs/2026/${exec.photo}.jpg`} alt={exec.name} loading="lazy" style={{ width: '100%', maxWidth: 280, aspectRatio: '1', objectFit: 'cover', borderRadius: '50%', marginBottom: '1.25rem' }} />
