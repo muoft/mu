@@ -5,5 +5,11 @@
     "r2_buckets": [{
         "bucket_name": "repo",
         "binding": "REPO"
+    }],
+    "d1_databases": [{
+        "binding": "DB",
+        "database_name": "muoft",
+        "database_id": "fdabc18a-814e-4bb0-9f04-8988ddc5e017",
+        "migrations_dir": "migrations"
     }]
 }

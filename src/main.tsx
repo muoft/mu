@@ -18,6 +18,7 @@ import Events from './pages/events/index';
 import EventDetailPage from './pages/events/[title]';
 import Repo from './pages/repo/index';
 import RepoUpload from './pages/repo/upload';
+import Admin from './pages/admin';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
@@ -32,6 +33,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         <Route path="/events/:title" element={<EventDetailPage />} />
         <Route path="/repo" element={<Repo />} />
         <Route path="/repo/upload" element={<RepoUpload />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
