@@ -1,23 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
 import { Breadcrumbs, SiteFooter, SiteHeader } from '../../components/common'
-
-type Entry = { course: string, year: number | undefined, name: string, tags: string[], file: string }
-
-const testwords = ['exam', 'midterm', 'test', 'final', 'quiz']
-const isTest = (e: Entry) => testwords.some(w => [e.name, ...e.tags].join(' ').toLowerCase().includes(w))
-
-const formatTags = (t: string[]) => t.map(tt => tt.replace('solutions', 'Has solutions')).join(', ')
+import { type Entry, sessionLabel, title } from '../../../shared/meta'
 
 const PDFCard = ({ entry }: { entry: Entry }) => {
-    return <a href={`/api/repo/${entry.file}`} target='_blank' rel='noopener'
+    return <a href={entry.pdf} target='_blank' rel='noopener'
         className='border rounded overflow-hidden text-decoration-none text-dark bg-white' style={{ width: 220 }}>
-        <div className='pdf-preview position-relative' style={{ height: 280 }}>
-            <iframe src={`/api/repo/${entry.file}#page=1&toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
-                className='w-100 h-100 border-0' style={{ pointerEvents: 'none' }} />
-        </div>
+        <img src={entry.preview} alt='' loading='lazy'
+            className='pdf-preview d-block w-100 border-bottom' style={{ height: 280, objectFit: 'cover', objectPosition: 'top' }} />
         <span className='d-block p-1 small'>
-            {entry.name} {entry.year ? `(${entry.year})` : ''}
-            {entry.tags.length > 0 && <span className='d-block text-muted mt-1' style={{ fontSize: 12 }}>{formatTags(entry.tags)}</span>}
+            {title(entry)} {entry.session && `(${sessionLabel(entry.session)})`}
+            {entry.solutions && <span className='d-block text-muted mt-1' style={{ fontSize: 12 }}>Has solutions</span>}
         </span>
     </a>
 }
@@ -41,12 +33,11 @@ export default () => {
     const [files, setFiles] = useState<Entry[]>([])
     const [course, setCourse] = useState('')
     const [oldest, setOldest] = useState(2007)
-    const [showAll, setShowAll] = useState(false)
 
     useEffect(() => { fetch('/api/repo').then(r => r.json()).then(setFiles) }, [])
 
     const courses = [...new Set(files.map(f => f.course))].sort()
-    let courseFiles = files.filter(f => f.course == course && (showAll || isTest(f))).filter(f => oldest <= 2007 || f.year >= oldest)
+    const courseFiles = files.filter(f => f.course == course && (oldest <= 2007 || +(f.session ?? '').slice(0, 4) >= oldest))
 
     return <>
         <SiteHeader active='repo' />
@@ -57,13 +48,11 @@ export default () => {
                 <h3 className='text-center'>Past Tests Repository</h3>
                 <CourseSearch setCourse={setCourse} course={course} courses={courses} />
                 <div className='text-center my-2 small text-muted'>
-                    Newer Than... <input className='' type="number" value={oldest} min={2007} max={2025} onChange={e => setOldest(+e.target.value)} />
-                    <span className="px-2"></span>
-                    Tests/Exams Only <input type='checkbox' checked={showAll} onChange={e => setShowAll(e.target.checked)} />
+                    Newer Than... <input className='' type="number" value={oldest} min={2007} max={new Date().getFullYear()} onChange={e => setOldest(+e.target.value)} />
                 </div>
                 <style>{`@media(max-width:600px){.pdf-preview{display:none}}`}</style>
                 <div className='d-flex flex-wrap gap-2 justify-content-center p-3'>
-                    {courseFiles.map(f => <PDFCard key={f.file} entry={f} />)}
+                    {courseFiles.map(f => <PDFCard key={f.id} entry={f} />)}
                 </div>
             </div>
         </div>
