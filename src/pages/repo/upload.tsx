@@ -18,10 +18,13 @@ export default () => {
 
     const submit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        const form = new FormData(e.currentTarget)
+        const { file, solutions, ...meta } = Object.fromEntries(new FormData(e.currentTarget))
         setMsg('Uploading...')
-        form.set('preview', await preview(form.get('file') as File), 'preview.webp')
-        const r = await fetch('/api/repo/upload', { method: 'POST', body: form })
+        const body = new FormData()
+        body.set('file', file)
+        body.set('preview', await preview(file as File), 'preview.webp')
+        body.set('meta', JSON.stringify({ ...meta, solutions: !!solutions }))
+        const r = await fetch('/api/repo/upload', { method: 'POST', body })
         setMsg(await r.text())
         if (r.ok) (e.target as HTMLFormElement).reset()
     }

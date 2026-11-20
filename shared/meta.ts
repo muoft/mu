@@ -11,12 +11,12 @@ export const sessions = (from = 2005, to = new Date().getFullYear()) =>
         [`${y}9-${y + 1}1`, `${y}9`, `${y}5`, `${y}1`])
 
 export const title = (m: Meta) =>
-    `${(m.type ?? 'test').split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' ')}${m.number ? ` ${m.number}` : ''}`
+    `${m.type ?? 'Test'}${m.number ? ` ${m.number}` : ''}`
 
 export function parseMeta(o: Record<string, unknown>): Meta | string {
     const course = String(o.course ?? '').replace(/\s/g, '').toUpperCase()
     const session = String(o.session ?? '') || null
-    const type = String(o.type ?? '').trim().toLowerCase().replace(/\s+/g, '-') || null
+    const type = String(o.type ?? '').trim() || null
     const number = o.number ? Number(o.number) : null
 
     if (!course || course.length > 16) return 'course required'
