@@ -6,6 +6,7 @@ CREATE TABLE files (
     session TEXT,
     type TEXT,
     number INTEGER,
+    instructor TEXT,
     solutions BOOLEAN NOT NULL DEFAULT FALSE,
     approved BOOLEAN NOT NULL DEFAULT FALSE,
     created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP

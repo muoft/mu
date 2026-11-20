@@ -9,6 +9,7 @@ const PDFCard = ({ entry }: { entry: Entry }) => {
             className='pdf-preview d-block w-100 border-bottom' style={{ height: 280, objectFit: 'cover', objectPosition: 'top' }} />
         <span className='d-block p-1 small'>
             {title(entry)} {entry.session && `(${sessionLabel(entry.session)})`}
+            {entry.instructor && <span className='d-block text-muted' style={{ fontSize: 12 }}>{entry.instructor}</span>}
             {entry.solutions && <span className='d-block text-muted mt-1' style={{ fontSize: 12 }}>Has solutions</span>}
         </span>
     </a>

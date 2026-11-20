@@ -42,6 +42,7 @@ export default () => {
             </select></label>
             <label>Type (optional) <input className='form-control' name='type' placeholder='test, practice test, exam, quiz...' /></label>
             <label>Number (optional) <input className='form-control' name='number' type='number' min={1} placeholder='e.g. 2 for Test 2' /></label>
+            <label>Instructor (optional) <input className='form-control' name='instructor' /></label>
             <label><input type='checkbox' name='solutions' /> Has solutions</label>
             <button className='btn btn-primary' disabled={msg == 'Uploading...'}>Upload</button>
             {msg && <p className='text-center'>{msg}</p>}

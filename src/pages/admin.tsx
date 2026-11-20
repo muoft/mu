@@ -21,6 +21,7 @@ const Row = ({ p, reload }: { p: Pending, reload: () => void }) => {
         </select></td>
         <td><input className='form-control form-control-sm' value={m.type ?? ''} onChange={set('type')} aria-label='Type' /></td>
         <td><input className='form-control form-control-sm' value={m.number ?? ''} onChange={set('number')} type='number' aria-label='Number' /></td>
+        <td><input className='form-control form-control-sm' value={m.instructor ?? ''} onChange={set('instructor')} aria-label='Instructor' /></td>
         <td><input type='checkbox' checked={m.solutions} onChange={set('solutions')} aria-label='Has solutions' /></td>
         <td className='text-nowrap'>
             <button className='btn btn-sm btn-success me-1' onClick={() => act({ method: 'POST', body: JSON.stringify(m) })}>Approve</button>
@@ -43,7 +44,7 @@ export default () => {
             {error && <p className='text-danger'>{error}</p>}
             {pending?.length === 0 && <p>Nothing pending.</p>}
             {!!pending?.length && <table className='table align-middle'>
-                <thead><tr><th>File</th><th>Uploaded</th><th>Course</th><th>Session</th><th>Type</th><th>#</th><th>Sol.</th><th></th></tr></thead>
+                <thead><tr><th>File</th><th>Uploaded</th><th>Course</th><th>Session</th><th>Type</th><th>#</th><th>Instructor</th><th>Sol.</th><th></th></tr></thead>
                 <tbody>{pending.map(p => <Row key={p.id} p={p} reload={reload} />)}</tbody>
             </table>}
         </div>
