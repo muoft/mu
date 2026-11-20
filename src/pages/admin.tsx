@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Breadcrumbs, SiteFooter, SiteHeader } from '../components/common'
-import { type Entry, sessionLabel, sessions, types } from '../../shared/meta'
+import { type Entry, sessionLabel, sessions } from '../../shared/meta'
 
 type Pending = Entry & { created_at: string }
 const api = '/api/admin/submissions'
@@ -19,10 +19,7 @@ const Row = ({ p, reload }: { p: Pending, reload: () => void }) => {
             <option value='' />
             {sessions().map(s => <option key={s} value={s}>{sessionLabel(s)}</option>)}
         </select></td>
-        <td><select className='form-select form-select-sm' value={m.type ?? ''} onChange={set('type')} aria-label='Type'>
-            <option value='' />
-            {types.map(t => <option key={t} value={t}>{t}</option>)}
-        </select></td>
+        <td><input className='form-control form-control-sm' value={m.type ?? ''} onChange={set('type')} aria-label='Type' /></td>
         <td><input className='form-control form-control-sm' value={m.number ?? ''} onChange={set('number')} type='number' aria-label='Number' /></td>
         <td><input type='checkbox' checked={m.solutions} onChange={set('solutions')} aria-label='Has solutions' /></td>
         <td className='text-nowrap'>

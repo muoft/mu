@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { getDocument, GlobalWorkerOptions } from 'pdfjs-dist'
 import workerSrc from 'pdfjs-dist/build/pdf.worker.min.mjs?url'
 import { Breadcrumbs, SiteFooter, SiteHeader } from '../../components/common'
-import { sessionLabel, sessions, types } from '../../../shared/meta'
+import { sessionLabel, sessions } from '../../../shared/meta'
 
 GlobalWorkerOptions.workerSrc = workerSrc
 
@@ -37,10 +37,7 @@ export default () => {
                 <option value='' />
                 {sessions().map(s => <option key={s} value={s}>{sessionLabel(s)}</option>)}
             </select></label>
-            <label>Type (optional) <select className='form-select' name='type'>
-                <option value='' />
-                {types.map(t => <option key={t} value={t}>{t}</option>)}
-            </select></label>
+            <label>Type (optional) <input className='form-control' name='type' placeholder='test, practice test, exam, quiz...' /></label>
             <label>Number (optional) <input className='form-control' name='number' type='number' min={1} placeholder='e.g. 2 for Test 2' /></label>
             <label><input type='checkbox' name='solutions' /> Has solutions</label>
             <button className='btn btn-primary' disabled={msg == 'Uploading...'}>Upload</button>

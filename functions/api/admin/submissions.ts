@@ -11,7 +11,7 @@ export async function onRequest(context: any) {
 
     if (request.method === 'POST') {
         const body = await request.json() as Record<string, unknown>
-        const m = parseMeta(k => body[k])
+        const m = parseMeta(body)
         if (typeof m === 'string') return new Response(m, { status: 400 })
         const { meta } = await db.prepare(
             'UPDATE files SET course = ?, session = ?, type = ?, number = ?, solutions = ?, approved = TRUE WHERE id = ? AND NOT approved'

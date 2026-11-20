@@ -4,7 +4,7 @@ CREATE TABLE files (
     preview TEXT NOT NULL,
     course TEXT NOT NULL,
     session TEXT,
-    type TEXT CHECK (type IN ('test', 'practice-test', 'exam', 'practice-exam', 'quiz')),
+    type TEXT,
     number INTEGER,
     solutions BOOLEAN NOT NULL DEFAULT FALSE,
     approved BOOLEAN NOT NULL DEFAULT FALSE,

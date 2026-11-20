@@ -11,7 +11,7 @@ export async function onRequestPost(context: any) {
     if (!(pdf instanceof File) || pdf.type !== 'application/pdf') return bad('file must be a PDF')
     if (pdf.size > 50e6) return bad('PDF too large (50 MB max)')
     if (!(preview instanceof File) || !preview.type.startsWith('image/') || preview.size > 2e6) return bad('bad preview image')
-    const m = parseMeta(k => form.get(k))
+    const m = parseMeta(Object.fromEntries(form))
     if (typeof m === 'string') return bad(m)
 
     const id = crypto.randomUUID()

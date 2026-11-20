@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Breadcrumbs, SiteFooter, SiteHeader } from '../../components/common'
 import { type Entry, sessionLabel, title } from '../../../shared/meta'
 
@@ -14,30 +14,20 @@ const PDFCard = ({ entry }: { entry: Entry }) => {
     </a>
 }
 
-const CourseSearch = ({ setCourse, course, courses }) => {
-    const [typing, setTyping] = useState('')
-    const courseInput = useRef(<p contentEditable onInput={e => setTyping(e.currentTarget.textContent?.toUpperCase() || '')} />)
-    const filtered = courses.filter(c => c.includes(typing)).slice(0, 10)
-
-    return <div className='w-25 mx-auto mt-3 position-relative' style={{ minWidth: 220 }}>
-        <div className='border fw-bold p-1 outline-none'> {courseInput.current} </div>
-        <div className='list-group position-absolute bg-white w-100 overflow-auto' style={{ maxHeight: 320, zIndex: 10 }}>
-            {typing && course != typing && filtered.map(c =>
-                <a key={c} onClick={() => { setCourse(c); setTyping('') }}>{c}</a>
-            )}
-        </div>
-    </div>
-}
-
 export default () => {
     const [files, setFiles] = useState<Entry[]>([])
     const [course, setCourse] = useState('')
-    const [oldest, setOldest] = useState(2007)
+    const [type, setType] = useState('')
+    const [oldest, setOldest] = useState('')
+    const [solutions, setSolutions] = useState(false)
 
     useEffect(() => { fetch('/api/repo').then(r => r.json()).then(setFiles) }, [])
 
-    const courses = [...new Set(files.map(f => f.course))].sort()
-    const courseFiles = files.filter(f => f.course == course && (oldest <= 2007 || +(f.session ?? '').slice(0, 4) >= oldest))
+    const q = course.replace(/\s/g, '').toUpperCase()
+    const shown = !q ? [] : files.filter(f => f.course.startsWith(q)
+        && (!type || f.type == type)
+        && (!oldest || +(f.session ?? '').slice(0, 4) >= +oldest)
+        && (!solutions || f.solutions))
 
     return <>
         <SiteHeader active='repo' />
@@ -46,13 +36,19 @@ export default () => {
         <div className='breadcrumbs pt-5'>
             <div className='container my-5 py-5 w-75 border shadow rounded bg-white'>
                 <h3 className='text-center'>Past Tests Repository</h3>
-                <CourseSearch setCourse={setCourse} course={course} courses={courses} />
-                <div className='text-center my-2 small text-muted'>
-                    Newer Than... <input className='' type="number" value={oldest} min={2007} max={new Date().getFullYear()} onChange={e => setOldest(+e.target.value)} />
+                <div className='d-flex flex-wrap gap-2 justify-content-center align-items-center my-3 small'>
+                    <input className='form-control w-auto' list='courses' placeholder='Course, e.g. MAT137' value={course} onChange={e => setCourse(e.target.value)} aria-label='Course' />
+                    <datalist id='courses'>{[...new Set(files.map(f => f.course))].sort().map(c => <option key={c} value={c} />)}</datalist>
+                    <select className='form-select w-auto' value={type} onChange={e => setType(e.target.value)} aria-label='Type'>
+                        <option value=''>Any type</option>
+                        {[...new Set(files.map(f => f.type).filter(Boolean))].sort().map(t => <option key={t} value={t!}>{t}</option>)}
+                    </select>
+                    <input className='form-control w-auto' type='number' placeholder='Since year' value={oldest} onChange={e => setOldest(e.target.value)} aria-label='Since year' style={{ maxWidth: 130 }} />
+                    <label><input type='checkbox' checked={solutions} onChange={e => setSolutions(e.target.checked)} /> Has solutions</label>
                 </div>
                 <style>{`@media(max-width:600px){.pdf-preview{display:none}}`}</style>
                 <div className='d-flex flex-wrap gap-2 justify-content-center p-3'>
-                    {courseFiles.map(f => <PDFCard key={f.id} entry={f} />)}
+                    {shown.map(f => <PDFCard key={f.id} entry={f} />)}
                 </div>
             </div>
         </div>
