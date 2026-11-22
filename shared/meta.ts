@@ -9,7 +9,7 @@ export const sessionLabel = (s: string | null) =>
 export const splitSession = (s: string | null) =>
     !s ? { year: '', term: '' } : { year: s.slice(0, 4), term: s.includes('-') ? 'Y' : s[4] }
 
-export const types = ['Test', 'Practice Test', 'Exam', 'Practice Exam', 'Quiz']
+export const types = ['Test', 'Practice Test', 'Exam', 'Practice Exam', 'Quiz', 'Other']
 
 export function parseMeta(o: Record<string, unknown>): Meta | string {
     const course = String(o.course ?? '').replace(/\s/g, '').toUpperCase()

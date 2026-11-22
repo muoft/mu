@@ -34,6 +34,7 @@ export default () => {
         <Breadcrumbs crumbs={["Past Tests Repository", "Upload"]} />
         <form onSubmit={submit} className='container my-5 d-flex flex-column gap-2' style={{ maxWidth: 420 }}>
             <h3 className='text-center'>Upload a past test</h3>
+            <p>Materials from all campuses and departments are appreciated! We'll scrub your name or any personal details from the PDF before publishing.</p>
             <label>PDF <input className='form-control' type='file' name='file' accept='application/pdf' required /></label>
             <label>Course <input className='form-control' name='course' placeholder='MAT137Y1' required /></label>
             <div className='d-flex gap-2'>
