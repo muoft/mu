@@ -10,7 +10,7 @@ const Links = () => {
     const [msg, setMsg] = useState('')
     useEffect(() => { fetch('/api/links').then(r => r.json()).then(setLinks) }, [])
 
-    const edit = (i: number, k: keyof Link) => (e: React.ChangeEvent<HTMLInputElement>) =>
+    const edit = (i: number, k: keyof Link) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
         setLinks(links.map((l, j) => j == i ? { ...l, [k]: e.target.value } : l))
     const move = (i: number, d: number) => {
         const next = [...links]; [next[i], next[i + d]] = [next[i + d], next[i]]; setLinks(next)
@@ -25,7 +25,10 @@ const Links = () => {
             <tbody>{links.map((l, i) => <tr key={i}>
                 <td><input className='form-control form-control-sm' value={l.title} onChange={edit(i, 'title')} aria-label='Title' /></td>
                 <td><input className='form-control form-control-sm' value={l.url} onChange={edit(i, 'url')} aria-label='URL' /></td>
-                <td><input className='form-control form-control-sm' value={l.icon ?? ''} onChange={edit(i, 'icon')} aria-label='Icon' style={{ width: 110 }} /></td>
+                <td><select className='form-select form-select-sm' value={l.icon ?? ''} onChange={edit(i, 'icon')} aria-label='Icon' style={{ width: 130 }}>
+                    <option value=''>button</option>
+                    {['instagram', 'discord', 'youtube', 'envelope'].map(ic => <option key={ic} value={ic}>{ic == 'envelope' ? 'email' : ic}</option>)}
+                </select></td>
                 <td className='text-nowrap'>
                     <button className='btn btn-sm btn-light' disabled={i == 0} onClick={() => move(i, -1)} aria-label='Move up'>↑</button>
                     <button className='btn btn-sm btn-light' disabled={i == links.length - 1} onClick={() => move(i, 1)} aria-label='Move down'>↓</button>
