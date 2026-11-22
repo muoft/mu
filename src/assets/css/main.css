@@ -897,13 +897,16 @@ ol {
   padding-bottom: 100px;
   z-index: 2;
   text-align: left;
-  background-color: #081828;
-  background-image: url("../images/photos/bg.png");
-  background-size: cover;
-  background-position: right;
-  background-repeat: no-repeat;
-  -webkit-box-shadow: 0px 7px 30px rgba(0, 0, 0, 0.075);
-  box-shadow: 0px 7px 30px rgba(0, 0, 0, 0.075);
+  clip-path: inset(0);
+}
+
+/* image sized to the window, not the box, so tall pages don't zoom it (background-attachment: fixed is ignored on iOS) */
+.breadcrumbs::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: #081828 url("../images/photos/bg.png") center / cover no-repeat;
 }
 
 /* .breadcrumbs::before {
