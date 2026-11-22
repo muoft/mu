@@ -35,7 +35,8 @@ export default () => {
         <Breadcrumbs crumbs={["Past Tests"]} show={false}/>
 
         <div className='breadcrumbs pt-5'>
-            <div className='container my-5 py-5 w-75 border shadow rounded bg-white'>
+            <div className='container my-5 py-5 w-75 border shadow rounded bg-white position-relative'>
+                <a href='/repo/upload' className='position-absolute top-0 end-0 m-3 text-dark'>upload a test</a>
                 <h3 className='text-center'>Past Tests Repository</h3>
                 <div className='d-flex flex-wrap gap-2 justify-content-center align-items-center my-3 small'>
                     <input className='form-control w-auto' list='courses' placeholder='Course, e.g. MAT137' value={course} onChange={e => setCourse(e.target.value)} aria-label='Course' />
