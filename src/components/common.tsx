@@ -37,9 +37,6 @@ export const SiteHeader = ({ active }: { active: string }) => (
                                         <a href="/repo" aria-label="Toggle navigation">Past Tests</a>
                                     </li>
                                     <li className="nav-item">
-                                        <a href="/events" aria-label="Toggle navigation">Events</a>
-                                    </li>
-                                    <li className="nav-item">
                                         <a href="/FAQs" aria-label="Toggle navigation">FAQs</a>
                                     </li>
                                     <li className="nav-item">

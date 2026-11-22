@@ -21,16 +21,6 @@ export default () => <>
         </div>
     </section>
 
-    <div className="container text" style={{ padding: '32px 0' }}>
-        <h2>Recent News</h2> <br />
-
-        <h4 style={{ color: '#7659fc', margin: '12px 0' }}>Integration Bee Monday</h4>
-        <p>Join us in this contest to solve some tricky integrals! This Monday March 30 in BA 6183 from 6:30 - 8:30PM.</p>
-
-        <h4 style={{ color: '#7659fc', margin: '12px 0' }}>ASSU Course Union of the Year!</h4>
-        <p>It is an honour to announce that μ(t) has won the ASSU Course Union of the Year Award!</p>
-    </div>
-
     <SiteFooter />
     <ScrollTop />
 </>

@@ -14,8 +14,6 @@ import AboutUs from './pages/about/about-us';
 import Execs from './pages/about/execs';
 import PastExecs from './pages/about/past-execs';
 import FAQs from './pages/FAQs';
-import Events from './pages/events/index';
-import EventDetailPage from './pages/events/[title]';
 import Repo from './pages/repo/index';
 import RepoUpload from './pages/repo/upload';
 import Admin from './pages/admin';
@@ -29,8 +27,6 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         <Route path="/about/execs" element={<Execs />} />
         <Route path="/about/past-execs" element={<PastExecs />} />
         <Route path="/FAQs" element={<FAQs />} />
-        <Route path="/events" element={<Events />} />
-        <Route path="/events/:title" element={<EventDetailPage />} />
         <Route path="/repo" element={<Repo />} />
         <Route path="/repo/upload" element={<RepoUpload />} />
         <Route path="/admin" element={<Admin />} />
