@@ -1,24 +1,27 @@
 import { useEffect, useState } from 'react'
 import { Breadcrumbs, SiteFooter, SiteHeader } from '../components/common'
-import { type Entry, sessionLabel, sessions } from '../../shared/meta'
+import { type Entry, splitSession, terms } from '../../shared/meta'
 
 type Pending = Entry & { created_at: string }
 const api = '/api/admin/submissions'
 
 const Row = ({ p, reload }: { p: Pending, reload: () => void }) => {
-    const [m, setM] = useState({ ...p, solutions: !!p.solutions })
+    const [m, setM] = useState({ ...p, ...splitSession(p.session), solutions: !!p.solutions })
     const act = (init: RequestInit, url = api) => fetch(url, init).then(async r => r.ok ? reload() : alert(await r.text()))
-    const set = (k: keyof Pending) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
+    const set = (k: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
         setM({ ...m, [k]: e.target instanceof HTMLInputElement && e.target.type === 'checkbox' ? e.target.checked : e.target.value })
 
     return <tr>
         <td><a href={p.pdf} target='_blank' rel='noopener'><img src={p.preview} width={80} alt='first page' /></a></td>
         <td className='small text-muted'>{new Date(p.created_at + 'Z').toLocaleString()}</td>
         <td><input className='form-control form-control-sm' value={m.course} onChange={set('course')} aria-label='Course' /></td>
-        <td><select className='form-select form-select-sm' value={m.session ?? ''} onChange={set('session')} aria-label='Session'>
-            <option value='' />
-            {sessions().map(s => <option key={s} value={s}>{sessionLabel(s)}</option>)}
-        </select></td>
+        <td className='d-flex gap-1'>
+            <input className='form-control form-control-sm' value={m.year} onChange={set('year')} type='number' aria-label='Year' style={{ width: 80 }} />
+            <select className='form-select form-select-sm' value={m.term} onChange={set('term')} aria-label='Term'>
+                <option value='' />
+                {Object.entries(terms).map(([v, l]) => <option key={v} value={v}>{l}</option>)}
+            </select>
+        </td>
         <td><input className='form-control form-control-sm' value={m.type ?? ''} onChange={set('type')} aria-label='Type' /></td>
         <td><input className='form-control form-control-sm' value={m.number ?? ''} onChange={set('number')} type='number' aria-label='Number' /></td>
         <td><input className='form-control form-control-sm' value={m.instructor ?? ''} onChange={set('instructor')} aria-label='Instructor' /></td>

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { getDocument, GlobalWorkerOptions } from 'pdfjs-dist'
 import workerSrc from 'pdfjs-dist/build/pdf.worker.min.mjs?url'
 import { Breadcrumbs, SiteFooter, SiteHeader } from '../../components/common'
-import { sessionLabel, sessions } from '../../../shared/meta'
+import { terms } from '../../../shared/meta'
 
 GlobalWorkerOptions.workerSrc = workerSrc
 
@@ -36,10 +36,13 @@ export default () => {
             <h3 className='text-center'>Upload a past test</h3>
             <label>PDF <input className='form-control' type='file' name='file' accept='application/pdf' required /></label>
             <label>Course <input className='form-control' name='course' placeholder='MAT137Y1' required /></label>
-            <label>Session (optional) <select className='form-select' name='session'>
-                <option value='' />
-                {sessions().map(s => <option key={s} value={s}>{sessionLabel(s)}</option>)}
-            </select></label>
+            <div className='d-flex gap-2'>
+                <label className='flex-fill'>Year (optional) <input className='form-control' name='year' type='number' placeholder='2025' /></label>
+                <label className='flex-fill'>Term (optional) <select className='form-select' name='term'>
+                    <option value='' />
+                    {Object.entries(terms).map(([v, l]) => <option key={v} value={v}>{l}</option>)}
+                </select></label>
+            </div>
             <label>Type (optional) <input className='form-control' name='type' placeholder='test, practice test, exam, quiz...' /></label>
             <label>Number (optional) <input className='form-control' name='number' type='number' min={1} placeholder='e.g. 2 for Test 2' /></label>
             <label>Instructor (optional) <input className='form-control' name='instructor' /></label>
