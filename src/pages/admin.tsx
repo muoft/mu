@@ -3,6 +3,42 @@ import { Breadcrumbs, SiteFooter, SiteHeader } from '../components/common'
 import { type Entry, splitSession, terms } from '../../shared/meta'
 
 type Pending = Entry & { created_at: string }
+type Link = { title: string, url: string, icon: string | null }
+
+const Links = () => {
+    const [links, setLinks] = useState<Link[]>([])
+    const [msg, setMsg] = useState('')
+    useEffect(() => { fetch('/api/links').then(r => r.json()).then(setLinks) }, [])
+
+    const edit = (i: number, k: keyof Link) => (e: React.ChangeEvent<HTMLInputElement>) =>
+        setLinks(links.map((l, j) => j == i ? { ...l, [k]: e.target.value } : l))
+    const move = (i: number, d: number) => {
+        const next = [...links]; [next[i], next[i + d]] = [next[i + d], next[i]]; setLinks(next)
+    }
+    const save = () => fetch('/api/admin/links', { method: 'PUT', body: JSON.stringify(links) })
+        .then(async r => setMsg(r.ok ? 'Saved.' : await r.text()))
+
+    return <>
+        <h3 className='mt-5'>Home page links</h3>
+        <p className='small text-muted'>Rows with an icon (e.g. instagram, discord, youtube, envelope) show as icons; the rest are buttons.</p>
+        <table className='table align-middle'>
+            <thead><tr><th>Title</th><th>URL</th><th>Icon</th><th></th></tr></thead>
+            <tbody>{links.map((l, i) => <tr key={i}>
+                <td><input className='form-control form-control-sm' value={l.title} onChange={edit(i, 'title')} aria-label='Title' /></td>
+                <td><input className='form-control form-control-sm' value={l.url} onChange={edit(i, 'url')} aria-label='URL' /></td>
+                <td><input className='form-control form-control-sm' value={l.icon ?? ''} onChange={edit(i, 'icon')} aria-label='Icon' style={{ width: 110 }} /></td>
+                <td className='text-nowrap'>
+                    <button className='btn btn-sm btn-light' disabled={i == 0} onClick={() => move(i, -1)} aria-label='Move up'>↑</button>
+                    <button className='btn btn-sm btn-light' disabled={i == links.length - 1} onClick={() => move(i, 1)} aria-label='Move down'>↓</button>
+                    <button className='btn btn-sm btn-outline-danger' onClick={() => setLinks(links.filter((_, j) => j != i))} aria-label='Remove'>✕</button>
+                </td>
+            </tr>)}</tbody>
+        </table>
+        <button className='btn btn-sm btn-light me-2' onClick={() => setLinks([...links, { title: '', url: '', icon: null }])}>Add link</button>
+        <button className='btn btn-sm btn-success' onClick={save}>Save links</button>
+        {msg && <span className='ms-2 small'>{msg}</span>}
+    </>
+}
 const api = '/api/admin/submissions'
 
 const Row = ({ p, reload }: { p: Pending, reload: () => void }) => {
@@ -49,6 +85,7 @@ export default () => {
                 <thead><tr><th>File</th><th>Uploaded</th><th>Course</th><th>Session</th><th>Type</th><th>Instructor</th><th>Sol.</th><th></th></tr></thead>
                 <tbody>{pending.map(p => <Row key={p.id} p={p} reload={reload} />)}</tbody>
             </table>}
+            <Links />
         </div>
         <SiteFooter />
     </>
