@@ -906,7 +906,7 @@ ol {
   position: fixed;
   inset: 0;
   z-index: -1;
-  background: #081828 url("../images/photos/bg.png") center / cover no-repeat;
+  background: #081828 url("../images/photos/bg.webp") center / cover no-repeat;
 }
 
 /* .breadcrumbs::before {
@@ -2084,7 +2084,7 @@ ol {
 ========================================*/
 .hero-area {
   position: relative;
-  background-image: url("../images/photos/bg.png");
+  background-image: url("../images/photos/bg.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -2094,13 +2094,13 @@ ol {
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .hero-area {
-    background-image: url("../images/photos/bg.png");
+    background-image: url("../images/photos/bg.webp");
   }
 }
 
 @media (max-width: 767px) {
   .hero-area {
-    background-image: url("../images/photos/bg.png");
+    background-image: url("../images/photos/bg.webp");
   }
 }
 
