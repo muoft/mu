@@ -19,22 +19,18 @@ export default () => {
     const [files, setFiles] = useState<Entry[]>([])
     const [course, setCourse] = useState('')
     const [type, setType] = useState('')
-    const [oldest, setOldest] = useState('')
-    const [solutions, setSolutions] = useState(false)
 
     useEffect(() => { fetch('/api/repo').then(r => r.json()).then(setFiles) }, [])
 
     const q = course.replace(/\s/g, '').toUpperCase()
     const shown = !q ? [] : files.filter(f => f.course.startsWith(q)
-        && (!type || f.type == type)
-        && (!oldest || +(f.session ?? '').slice(0, 4) >= +oldest)
-        && (!solutions || f.solutions))
+        && (!type || f.type == type))
 
     return <>
         <SiteHeader active='repo' />
         <Breadcrumbs crumbs={["Past Tests"]} show={false}/>
 
-        <div className='breadcrumbs pt-5'>
+        <div className='breadcrumbs pt-5' style={{ backgroundAttachment: 'fixed' }}>
             <div className='container my-5 py-5 w-75 border shadow rounded bg-white position-relative'>
                 <a href='/repo/upload' className='position-absolute top-0 end-0 m-3 text-dark'>upload a test</a>
                 <h3 className='text-center'>Past Tests Repository</h3>
@@ -45,8 +41,6 @@ export default () => {
                         <option value=''>Any type</option>
                         {[...new Set(files.map(f => f.type).filter(Boolean))].sort().map(t => <option key={t} value={t!}>{t}</option>)}
                     </select>
-                    <input className='form-control w-auto' type='number' placeholder='Since year' value={oldest} onChange={e => setOldest(e.target.value)} aria-label='Since year' style={{ maxWidth: 130 }} />
-                    <label><input type='checkbox' checked={solutions} onChange={e => setSolutions(e.target.checked)} /> Has solutions</label>
                 </div>
                 <style>{`@media(max-width:600px){.pdf-preview{display:none}}`}</style>
                 <div className='d-flex flex-wrap gap-2 justify-content-center p-3'>
