@@ -20,7 +20,6 @@ const Links = () => {
 
     return <>
         <h3 className='mt-5'>Home page links</h3>
-        <p className='small text-muted'>Rows with an icon (e.g. instagram, discord, youtube, envelope) show as icons; the rest are buttons.</p>
         <table className='table align-middle'>
             <thead><tr><th>Title</th><th>URL</th><th>Icon</th><th></th></tr></thead>
             <tbody>{links.map((l, i) => <tr key={i}>
