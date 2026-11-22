@@ -23,8 +23,8 @@ export default () => <>
 
     <div className='breadcrumbs'>
         <div className='container border shadow rounded bg-white p-4 d-flex flex-column gap-2 text-center' style={{ maxWidth: 560, width: 'calc(100% - 32px)' }}>
-            <h1 className='mt-2'>Math Union</h1>
-            <p>University of Toronto · To infinity and beyond!</p>
+            <p>University of Toronto</p>
+            <h3 className='mb-2'>Math Union</h3>
             {links.map(([label, href]) =>
                 <a key={href} href={href} className='btn btn-outline-dark py-3' target={href.startsWith('http') ? '_blank' : undefined} rel='noopener'>{label}</a>)}
             <div className='d-flex justify-content-center gap-4 pt-2 fs-3'>
