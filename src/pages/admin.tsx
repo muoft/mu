@@ -26,7 +26,7 @@ const Links = () => {
                 <td><input className='form-control form-control-sm' value={l.title} onChange={edit(i, 'title')} aria-label='Title' /></td>
                 <td><input className='form-control form-control-sm' value={l.url} onChange={edit(i, 'url')} aria-label='URL' /></td>
                 <td><select className='form-select form-select-sm' value={l.icon ?? ''} onChange={edit(i, 'icon')} aria-label='Icon' style={{ width: 130 }}>
-                    <option value=''>button</option>
+                    <option value='' />
                     {['instagram', 'discord', 'youtube', 'envelope'].map(ic => <option key={ic} value={ic}>{ic == 'envelope' ? 'email' : ic}</option>)}
                 </select></td>
                 <td className='text-nowrap'>
