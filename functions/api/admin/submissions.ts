@@ -14,8 +14,8 @@ export async function onRequest(context: any) {
         const m = parseMeta(body)
         if (typeof m === 'string') return new Response(m, { status: 400 })
         const { meta } = await db.prepare(
-            'UPDATE files SET course = ?, session = ?, type = ?, number = ?, instructor = ?, solutions = ?, approved = TRUE WHERE id = ? AND NOT approved'
-        ).bind(m.course, m.session, m.type, m.number, m.instructor, +m.solutions, Number(body.id)).run()
+            'UPDATE files SET course = ?, session = ?, type = ?, instructor = ?, solutions = ?, approved = TRUE WHERE id = ? AND NOT approved'
+        ).bind(m.course, m.session, m.type, m.instructor, +m.solutions, Number(body.id)).run()
         return meta.changes ? new Response('ok') : new Response('Not found', { status: 404 })
     }
 

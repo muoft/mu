@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Breadcrumbs, SiteFooter, SiteHeader } from '../../components/common'
-import { type Entry, sessionLabel, title } from '../../../shared/meta'
+import { type Entry, sessionLabel } from '../../../shared/meta'
 
 const PDFCard = ({ entry }: { entry: Entry }) => {
     return <a href={entry.pdf} target='_blank' rel='noopener'
@@ -8,7 +8,7 @@ const PDFCard = ({ entry }: { entry: Entry }) => {
         <img src={entry.preview} alt='' loading='lazy'
             className='pdf-preview d-block w-100 border-bottom' style={{ height: 280, objectFit: 'cover', objectPosition: 'top' }} />
         <span className='d-block p-1 small'>
-            {title(entry)} {entry.session && `(${sessionLabel(entry.session)})`}
+            {entry.type} {entry.session && `(${sessionLabel(entry.session)})`}
             {entry.instructor && <span className='d-block text-muted' style={{ fontSize: 12 }}>{entry.instructor}</span>}
             {entry.solutions && <span className='d-block text-muted mt-1' style={{ fontSize: 12 }}>Has solutions</span>}
         </span>

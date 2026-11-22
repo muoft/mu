@@ -5,7 +5,6 @@ CREATE TABLE files (
     course TEXT NOT NULL,
     session TEXT,
     type TEXT,
-    number INTEGER,
     instructor TEXT,
     solutions BOOLEAN NOT NULL DEFAULT FALSE,
     approved BOOLEAN NOT NULL DEFAULT FALSE,
