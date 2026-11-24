@@ -6,7 +6,7 @@ const PDFCard = ({ entry }: { entry: Entry }) => {
     return <a href={entry.pdf} target='_blank' rel='noopener'
         className='border rounded overflow-hidden text-decoration-none text-dark bg-white' style={{ width: 220 }}>
         <img src={entry.preview} alt='' loading='lazy'
-            className='pdf-preview d-block w-100 border-bottom' style={{ height: 280, objectFit: 'cover', objectPosition: 'top' }} />
+            className='d-block w-100 border-bottom' style={{ height: 280, objectFit: 'cover', objectPosition: 'top' }} />
         <span className='d-block p-1 small'>
             {entry.type} {entry.session && `(${sessionLabel(entry.session)})`}
             {entry.instructor && <span className='d-block text-muted' style={{ fontSize: 12 }}>{entry.instructor}</span>}
@@ -41,7 +41,6 @@ export default () => {
                     {[...new Set(files.map(f => f.type).filter(Boolean))].sort().map(t => <option key={t} value={t!}>{t}</option>)}
                 </select>
             </div>
-            <style>{`@media(max-width:600px){.pdf-preview{display:none}}`}</style>
             <div className='d-flex flex-wrap gap-2 justify-content-center p-3'>
                 {shown.map(f => <PDFCard key={f.id} entry={f} />)}
             </div>
