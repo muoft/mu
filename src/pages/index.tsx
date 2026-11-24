@@ -1,36 +1,27 @@
-import { Breadcrumbs, ScrollTop, SiteFooter, SiteHeader } from '../components/common';
+import { useEffect, useState } from 'react';
+import { Breadcrumbs, Card, ScrollTop, SiteFooter, SiteHeader } from '../components/common';
 
-export default () => <>
-    <SiteHeader active="home" />
-    <Breadcrumbs crumbs={["Home"]} show={false} />
+type Link = { title: string, url: string, icon: string | null }
+const ext = (url: string) => url.startsWith('/') ? {} : { target: '_blank', rel: 'noopener' }
 
-    <section className="hero-area">
-        <div className="container">
-            <div className="row align-items-center">
-                <div className="col-lg-5 col-md-12 col-12">
-                    <div className="hero-content">
-                        <h4>University of Toronto</h4>
-                        <h1>Math Union</h1>
-                        <p>To infinity and beyond!</p>
-                        <div className="button">
-                            <a href="/about/about-us" className="btn">About Us</a>
-                        </div>
-                    </div>
-                </div>
+export default () => {
+    const [links, setLinks] = useState<Link[]>([])
+    useEffect(() => { fetch('/api/links').then(r => r.json()).then(setLinks) }, [])
+
+    return <>
+        <SiteHeader active="home" />
+        <Breadcrumbs crumbs={["Home"]} show={false} />
+
+        <Card className='d-flex flex-column gap-2 text-center' maxWidth={560}>
+            <p>University of Toronto</p>
+            <h3 className='mb-2'>Math Union</h3>
+            {links.filter(l => !l.icon).map(l => <a key={l.url} href={l.url} className='btn btn-outline-dark py-3' {...ext(l.url)}>{l.title}</a>)}
+            <div className='d-flex justify-content-center gap-4 pt-2 fs-3'>
+                {links.filter(l => l.icon).map(l => <a key={l.url} href={l.url} className='text-dark' aria-label={l.title} {...ext(l.url)}><i className={`lni lni-${l.icon}`} /></a>)}
             </div>
-        </div>
-    </section>
+        </Card>
 
-    <div className="container text" style={{ padding: '32px 0' }}>
-        <h2>Recent News</h2> <br />
-
-        <h4 style={{ color: '#7659fc', margin: '12px 0' }}>Integration Bee Monday</h4>
-        <p>Join us in this contest to solve some tricky integrals! This Monday March 30 in BA 6183 from 6:30 - 8:30PM.</p>
-
-        <h4 style={{ color: '#7659fc', margin: '12px 0' }}>ASSU Course Union of the Year!</h4>
-        <p>It is an honour to announce that μ(t) has won the ASSU Course Union of the Year Award!</p>
-    </div>
-
-    <SiteFooter />
-    <ScrollTop />
-</>
+        <SiteFooter />
+        <ScrollTop />
+    </>
+}

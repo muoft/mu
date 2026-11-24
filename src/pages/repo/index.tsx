@@ -1,72 +1,50 @@
-import { useEffect, useRef, useState } from 'react'
-import { Breadcrumbs, SiteFooter, SiteHeader } from '../../components/common'
-
-type Entry = { course: string, year: number | undefined, name: string, tags: string[], file: string }
-
-const testwords = ['exam', 'midterm', 'test', 'final', 'quiz']
-const isTest = (e: Entry) => testwords.some(w => [e.name, ...e.tags].join(' ').toLowerCase().includes(w))
-
-const formatTags = (t: string[]) => t.map(tt => tt.replace('solutions', 'Has solutions')).join(', ')
+import { useEffect, useState } from 'react'
+import { Breadcrumbs, Card, SiteFooter, SiteHeader } from '../../components/common'
+import { type Entry, sessionLabel } from '../../../shared/meta'
 
 const PDFCard = ({ entry }: { entry: Entry }) => {
-    return <a href={`/api/repo/${entry.file}`} target='_blank' rel='noopener'
+    return <a href={entry.pdf} target='_blank' rel='noopener'
         className='border rounded overflow-hidden text-decoration-none text-dark bg-white' style={{ width: 220 }}>
-        <div className='pdf-preview position-relative' style={{ height: 280 }}>
-            <iframe src={`/api/repo/${entry.file}#page=1&toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
-                className='w-100 h-100 border-0' style={{ pointerEvents: 'none' }} />
-        </div>
+        <img src={entry.preview} alt='' loading='lazy'
+            className='d-block w-100 border-bottom' style={{ height: 280, objectFit: 'cover', objectPosition: 'top' }} />
         <span className='d-block p-1 small'>
-            {entry.name} {entry.year ? `(${entry.year})` : ''}
-            {entry.tags.length > 0 && <span className='d-block text-muted mt-1' style={{ fontSize: 12 }}>{formatTags(entry.tags)}</span>}
+            {entry.type} {entry.session && `(${sessionLabel(entry.session)})`}
+            {entry.instructor && <span className='d-block text-muted' style={{ fontSize: 12 }}>{entry.instructor}</span>}
+            {entry.solutions && <span className='d-block text-muted mt-1' style={{ fontSize: 12 }}>Has solutions</span>}
         </span>
     </a>
-}
-
-const CourseSearch = ({ setCourse, course, courses }) => {
-    const [typing, setTyping] = useState('')
-    const courseInput = useRef(<p contentEditable onInput={e => setTyping(e.currentTarget.textContent?.toUpperCase() || '')} />)
-    const filtered = courses.filter(c => c.includes(typing)).slice(0, 10)
-
-    return <div className='w-25 mx-auto mt-3 position-relative' style={{ minWidth: 220 }}>
-        <div className='border fw-bold p-1 outline-none'> {courseInput.current} </div>
-        <div className='list-group position-absolute bg-white w-100 overflow-auto' style={{ maxHeight: 320, zIndex: 10 }}>
-            {typing && course != typing && filtered.map(c =>
-                <a key={c} onClick={() => { setCourse(c); setTyping('') }}>{c}</a>
-            )}
-        </div>
-    </div>
 }
 
 export default () => {
     const [files, setFiles] = useState<Entry[]>([])
     const [course, setCourse] = useState('')
-    const [oldest, setOldest] = useState(2007)
-    const [showAll, setShowAll] = useState(false)
+    const [type, setType] = useState('')
 
     useEffect(() => { fetch('/api/repo').then(r => r.json()).then(setFiles) }, [])
 
-    const courses = [...new Set(files.map(f => f.course))].sort()
-    let courseFiles = files.filter(f => f.course == course && (showAll || isTest(f))).filter(f => oldest <= 2007 || f.year >= oldest)
+    const q = course.replace(/\s/g, '').toUpperCase()
+    const shown = !q ? [] : files.filter(f => f.course.startsWith(q)
+        && (!type || f.type == type))
 
     return <>
         <SiteHeader active='repo' />
         <Breadcrumbs crumbs={["Past Tests"]} show={false}/>
 
-        <div className='breadcrumbs pt-5'>
-            <div className='container my-5 py-5 w-75 border shadow rounded bg-white'>
-                <h3 className='text-center'>Past Tests Repository</h3>
-                <CourseSearch setCourse={setCourse} course={course} courses={courses} />
-                <div className='text-center my-2 small text-muted'>
-                    Newer Than... <input className='' type="number" value={oldest} min={2007} max={2025} onChange={e => setOldest(+e.target.value)} />
-                    <span className="px-2"></span>
-                    Tests/Exams Only <input type='checkbox' checked={showAll} onChange={e => setShowAll(e.target.checked)} />
-                </div>
-                <style>{`@media(max-width:600px){.pdf-preview{display:none}}`}</style>
-                <div className='d-flex flex-wrap gap-2 justify-content-center p-3'>
-                    {courseFiles.map(f => <PDFCard key={f.file} entry={f} />)}
-                </div>
+        <Card className='pt-5'>
+            <a href='/repo/upload' className='position-absolute top-0 end-0 m-3 text-dark'>upload a test</a>
+            <h3 className='text-center'>Past Tests Repository</h3>
+            <div className='d-flex flex-wrap gap-2 justify-content-center align-items-center my-3 small'>
+                <input className='form-control w-auto' list='courses' placeholder='Course, e.g. MAT137' value={course} onChange={e => setCourse(e.target.value)} aria-label='Course' />
+                <datalist id='courses'>{[...new Set(files.map(f => f.course))].sort().map(c => <option key={c} value={c} />)}</datalist>
+                <select className='form-select w-auto' value={type} onChange={e => setType(e.target.value)} aria-label='Type'>
+                    <option value=''>Any type</option>
+                    {[...new Set(files.map(f => f.type).filter(Boolean))].sort().map(t => <option key={t} value={t!}>{t}</option>)}
+                </select>
             </div>
-        </div>
+            <div className='d-flex flex-wrap gap-2 justify-content-center p-3'>
+                {shown.map(f => <PDFCard key={f.id} entry={f} />)}
+            </div>
+        </Card>
 
         <SiteFooter />
     </>

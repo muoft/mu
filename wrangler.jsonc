@@ -1,9 +1,14 @@
 {
-    "name": "mu",
+    "name": "website",
     "compatibility_date": "2026-03-05",
     "pages_build_output_dir": "dist",
     "r2_buckets": [{
         "bucket_name": "repo",
         "binding": "REPO"
+    }],
+    "d1_databases": [{
+        "binding": "DB",
+        "database_name": "muoft",
+        "database_id": "fdabc18a-814e-4bb0-9f04-8988ddc5e017"
     }]
 }

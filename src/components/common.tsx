@@ -37,9 +37,6 @@ export const SiteHeader = ({ active }: { active: string }) => (
                                         <a href="/repo" aria-label="Toggle navigation">Past Tests</a>
                                     </li>
                                     <li className="nav-item">
-                                        <a href="/events" aria-label="Toggle navigation">Events</a>
-                                    </li>
-                                    <li className="nav-item">
                                         <a href="/FAQs" aria-label="Toggle navigation">FAQs</a>
                                     </li>
                                     <li className="nav-item">
@@ -105,6 +102,12 @@ export const SiteFooter = () => (
             </div>
         </div>
     </footer>
+);
+
+export const Card = ({ className = '', maxWidth, children }: { className?: string, maxWidth?: number, children: React.ReactNode }) => (
+    <div className='breadcrumbs'>
+        <div className={`container page-card border shadow rounded bg-white p-4 position-relative ${className}`} style={{ maxWidth }}>{children}</div>
+    </div>
 );
 
 export const ScrollTop = () => (
