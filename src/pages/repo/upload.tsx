@@ -31,28 +31,28 @@ export default () => {
 
     return <>
         <SiteHeader active="repo" />
-        <Breadcrumbs crumbs={["Past Tests Repository", "Upload"]} />
-        <form onSubmit={submit} className='container my-5 d-flex flex-column gap-2' style={{ maxWidth: 420 }}>
-            <h3 className='text-center'>Upload a past test</h3>
-            <p>Materials from all campuses and departments are appreciated! We'll scrub your name or any personal details from the PDF before publishing.</p>
-            <label>PDF <input className='form-control' type='file' name='file' accept='application/pdf' required /></label>
-            <label>Course <input className='form-control' name='course' placeholder='MAT137Y1' required /></label>
-            <div className='d-flex gap-2'>
-                <label className='flex-fill'>Year <input className='form-control' name='year' type='number' placeholder='2025' /></label>
-                <label className='flex-fill'>Term <select className='form-select' name='term'>
-                    <option value='' />
-                    {Object.entries(terms).map(([v, l]) => <option key={v} value={v}>{l}</option>)}
-                </select></label>
-            </div>
-            <label>Type <select className='form-select' name='type'>
-                <option value='' />
-                {types.map(t => <option key={t}>{t}</option>)}
-            </select></label>
-            <label>Instructor <input className='form-control' name='instructor' /></label>
-            <label><input type='checkbox' name='solutions' /> Has solutions</label>
-            <button className='btn btn-primary' disabled={msg == 'Uploading...'}>Upload</button>
-            {msg && <p className='text-center'>{msg}</p>}
-        </form>
+        <Breadcrumbs crumbs={["Upload"]} show={false} />
+        <div className='breadcrumbs'>
+            <form onSubmit={submit} className='container page-card border shadow rounded bg-white p-4 d-flex flex-column gap-2' style={{ maxWidth: 560 }}>
+                <h3 className='text-center'>Upload a past test</h3>
+                <p>Materials from all campuses and departments are appreciated! We'll scrub your name or any personal details from the PDF before publishing.</p>
+                <label>PDF <input className='form-control' type='file' name='file' accept='application/pdf' required /></label>
+                <label>Course <input className='form-control' name='course' placeholder='MAT137Y1' required /></label>
+                <div className='d-flex gap-2'>
+                    <label className='flex-fill'>Year <input className='form-control' name='year' type='number' placeholder='2025' /></label>
+                    <label className='flex-fill'>Term <select className='form-select' name='term'>
+                        <option value='' />
+                        {Object.entries(terms).map(([v, l]) => <option key={v} value={v}>{l}</option>)}
+                    </select></label>
+                </div>
+                <label>Type <input className='form-control' name='type' list='types' maxLength={32} /></label>
+                <datalist id='types'>{types.map(t => <option key={t} value={t} />)}</datalist>
+                <label>Instructor <input className='form-control' name='instructor' /></label>
+                <label><input type='checkbox' name='solutions' /> Has solutions</label>
+                <button className='btn btn-primary' disabled={msg == 'Uploading...'}>Upload</button>
+                {msg && <p className='text-center'>{msg}</p>}
+            </form>
+        </div>
         <SiteFooter />
     </>
 }

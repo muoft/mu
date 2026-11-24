@@ -900,7 +900,10 @@ ol {
   clip-path: inset(0);
 }
 
-/* image sized to the window, not the box, so tall pages don't zoom it (background-attachment: fixed is ignored on iOS) */
+.page-card {
+  width: calc(100% - 24px);
+}
+
 .breadcrumbs::after {
   content: "";
   position: fixed;

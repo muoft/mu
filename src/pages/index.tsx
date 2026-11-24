@@ -13,7 +13,7 @@ export default () => {
         <Breadcrumbs crumbs={["Home"]} show={false} />
 
         <div className='breadcrumbs'>
-            <div className='container border shadow rounded bg-white p-4 d-flex flex-column gap-2 text-center' style={{ maxWidth: 560, width: 'calc(100% - 32px)' }}>
+            <div className='container page-card border shadow rounded bg-white p-4 d-flex flex-column gap-2 text-center' style={{ maxWidth: 560 }}>
                 <p>University of Toronto</p>
                 <h3 className='mb-2'>Math Union</h3>
                 {links.filter(l => !l.icon).map(l => <a key={l.url} href={l.url} className='btn btn-outline-dark py-3' {...ext(l.url)}>{l.title}</a>)}
