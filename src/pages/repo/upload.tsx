@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { getDocument, GlobalWorkerOptions } from 'pdfjs-dist'
 import workerSrc from 'pdfjs-dist/build/pdf.worker.min.mjs?url'
-import { Breadcrumbs, SiteFooter, SiteHeader } from '../../components/common'
+import { Breadcrumbs, Card, SiteFooter, SiteHeader } from '../../components/common'
 import { terms, types } from '../../../shared/meta'
 
 GlobalWorkerOptions.workerSrc = workerSrc
@@ -32,8 +32,8 @@ export default () => {
     return <>
         <SiteHeader active="repo" />
         <Breadcrumbs crumbs={["Upload"]} show={false} />
-        <div className='breadcrumbs'>
-            <form onSubmit={submit} className='container page-card border shadow rounded bg-white p-4 d-flex flex-column gap-2' style={{ maxWidth: 560 }}>
+        <Card maxWidth={560}>
+            <form onSubmit={submit} className='d-flex flex-column gap-2'>
                 <h3 className='text-center'>Upload a past test</h3>
                 <p>Materials from all campuses and departments are appreciated! We'll scrub your name or any personal details from the PDF before publishing.</p>
                 <label>PDF <input className='form-control' type='file' name='file' accept='application/pdf' required /></label>
@@ -52,7 +52,7 @@ export default () => {
                 <button className='btn btn-primary' disabled={msg == 'Uploading...'}>Upload</button>
                 {msg && <p className='text-center'>{msg}</p>}
             </form>
-        </div>
+        </Card>
         <SiteFooter />
     </>
 }

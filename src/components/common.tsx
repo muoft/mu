@@ -104,6 +104,12 @@ export const SiteFooter = () => (
     </footer>
 );
 
+export const Card = ({ className = '', maxWidth, children }: { className?: string, maxWidth?: number, children: React.ReactNode }) => (
+    <div className='breadcrumbs'>
+        <div className={`container page-card border shadow rounded bg-white p-4 position-relative ${className}`} style={{ maxWidth }}>{children}</div>
+    </div>
+);
+
 export const ScrollTop = () => (
     <a href="#" className="scroll-top">
         <i className="lni lni-chevron-up"></i>

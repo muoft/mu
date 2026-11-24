@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Breadcrumbs, SiteFooter, SiteHeader } from '../../components/common'
+import { Breadcrumbs, Card, SiteFooter, SiteHeader } from '../../components/common'
 import { type Entry, sessionLabel } from '../../../shared/meta'
 
 const PDFCard = ({ entry }: { entry: Entry }) => {
@@ -30,24 +30,22 @@ export default () => {
         <SiteHeader active='repo' />
         <Breadcrumbs crumbs={["Past Tests"]} show={false}/>
 
-        <div className='breadcrumbs pt-5'>
-            <div className='container page-card my-5 py-5 border shadow rounded bg-white position-relative'>
-                <a href='/repo/upload' className='position-absolute top-0 end-0 m-3 text-dark'>upload a test</a>
-                <h3 className='text-center'>Past Tests Repository</h3>
-                <div className='d-flex flex-wrap gap-2 justify-content-center align-items-center my-3 small'>
-                    <input className='form-control w-auto' list='courses' placeholder='Course, e.g. MAT137' value={course} onChange={e => setCourse(e.target.value)} aria-label='Course' />
-                    <datalist id='courses'>{[...new Set(files.map(f => f.course))].sort().map(c => <option key={c} value={c} />)}</datalist>
-                    <select className='form-select w-auto' value={type} onChange={e => setType(e.target.value)} aria-label='Type'>
-                        <option value=''>Any type</option>
-                        {[...new Set(files.map(f => f.type).filter(Boolean))].sort().map(t => <option key={t} value={t!}>{t}</option>)}
-                    </select>
-                </div>
-                <style>{`@media(max-width:600px){.pdf-preview{display:none}}`}</style>
-                <div className='d-flex flex-wrap gap-2 justify-content-center p-3'>
-                    {shown.map(f => <PDFCard key={f.id} entry={f} />)}
-                </div>
+        <Card className='pt-5'>
+            <a href='/repo/upload' className='position-absolute top-0 end-0 m-3 text-dark'>upload a test</a>
+            <h3 className='text-center'>Past Tests Repository</h3>
+            <div className='d-flex flex-wrap gap-2 justify-content-center align-items-center my-3 small'>
+                <input className='form-control w-auto' list='courses' placeholder='Course, e.g. MAT137' value={course} onChange={e => setCourse(e.target.value)} aria-label='Course' />
+                <datalist id='courses'>{[...new Set(files.map(f => f.course))].sort().map(c => <option key={c} value={c} />)}</datalist>
+                <select className='form-select w-auto' value={type} onChange={e => setType(e.target.value)} aria-label='Type'>
+                    <option value=''>Any type</option>
+                    {[...new Set(files.map(f => f.type).filter(Boolean))].sort().map(t => <option key={t} value={t!}>{t}</option>)}
+                </select>
             </div>
-        </div>
+            <style>{`@media(max-width:600px){.pdf-preview{display:none}}`}</style>
+            <div className='d-flex flex-wrap gap-2 justify-content-center p-3'>
+                {shown.map(f => <PDFCard key={f.id} entry={f} />)}
+            </div>
+        </Card>
 
         <SiteFooter />
     </>
