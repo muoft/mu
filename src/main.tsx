@@ -1,0 +1,36 @@
+import './assets/css/bootstrap.min.css';
+import './assets/css/LineIcons.3.0.css';
+import './assets/css/animate.css';
+import './assets/css/tiny-slider.css';
+import './assets/css/glightbox.min.css';
+import './assets/css/main.css';
+
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import Home from './pages/index';
+import AboutUs from './pages/about/about-us';
+import Execs from './pages/about/execs';
+import PastExecs from './pages/about/past-execs';
+import FAQs from './pages/FAQs';
+import Repo from './pages/repo/index';
+import RepoUpload from './pages/repo/upload';
+import Admin from './pages/admin';
+
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about/about-us" element={<AboutUs />} />
+        <Route path="/about/execs" element={<Execs />} />
+        <Route path="/about/past-execs" element={<PastExecs />} />
+        <Route path="/FAQs" element={<FAQs />} />
+        <Route path="/repo" element={<Repo />} />
+        <Route path="/repo/upload" element={<RepoUpload />} />
+        <Route path="/admin" element={<Admin />} />
+      </Routes>
+    </BrowserRouter>
+  </React.StrictMode>,
+)
